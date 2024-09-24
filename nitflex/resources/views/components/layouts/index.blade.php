@@ -7,6 +7,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {{ $title }}</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <link rel="stylesheet" href="//cdn.datatables.net/2.1.7/css/dataTables.dataTables.min.css">
+
+    <script src='//cdn.datatables.net/2.1.7/js/dataTables.min.js'></script>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
