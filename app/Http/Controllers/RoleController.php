@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\role;
 use App\Http\Requests\StoreroleRequest;
 use App\Http\Requests\UpdateroleRequest;
+use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\Html\Builder;
 use Yajra\DataTables\Html\Column;
@@ -32,7 +33,7 @@ class RoleController extends Controller
         $roles = role::all();
 
         return DataTables::of($roles)
-            // ->addColumn('checkbox', 'admin.roles.dataTable.checkbox')
+             ->addColumn('checkbox', 'admin.roles.dataTable.checkbox')
              ->addColumn('action', 'admin.roles.dataTable.action')
             ->editColumn('created_at', function ($roles) {
                 return $roles->created_at->format('d-m-y');
@@ -40,7 +41,7 @@ class RoleController extends Controller
             ->editColumn('updated_at', function ($roles) {
                 return $roles->created_at->format('d-m-y');
             })
-            // ->rawColumns(['action', 'checkbox'])
+             ->rawColumns(['action', 'checkbox'])
             ->toJson();
     }
 
@@ -90,5 +91,9 @@ class RoleController extends Controller
     public function destroy(role $role)
     {
         //
+    }
+    public function bulckDelete(Request $role)
+    {
+        dd($role);
     }
 }

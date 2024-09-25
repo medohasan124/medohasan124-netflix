@@ -22,6 +22,7 @@ return [
     'update'   => 'Update',
     'delete'   => 'Delete',
     'all'   => 'All',
+    'b_delete'   => 'Delete All',
     'settings'   => 'Settings',
     'add_success'   => 'add Succesflly',
     'updated_success'   => ' Update Succesflly',
@@ -32,5 +33,7 @@ return [
     'description'   => 'Description',
     'keyword'   => 'Keyword',
     'profile'   => 'Profile',
+    'updated_at'   => 'updated At',
+    'action'   => 'Action',
 
 ];

@@ -22,7 +22,7 @@ class permission extends Controller
         $roles = ModelsPermission::all();
 
         return DataTables::of($roles)
-            // ->addColumn('checkbox', 'admin.roles.dataTable.checkbox')
+            //  ->addColumn('checkbox', 'admin.roles.dataTable.checkbox')
              ->addColumn('action', 'admin.roles.dataTable.action')
             ->editColumn('created_at', function ($roles) {
                 return $roles->created_at->format('d-m-y');

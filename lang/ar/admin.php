@@ -21,6 +21,7 @@ return [
     'permission'   => 'الصلاحيات',
     'create'   => 'اضافة',
     'read'   => 'قراة',
+    'b_delete'   => 'حذف الكل',
     'update'   => 'تعديل',
     'delete'   => 'حذف',
     'all'   => 'الكل',

@@ -33,6 +33,7 @@ Route::middleware([
                     return view('admin.dashboard.index');
                 })->name('dashboard');
 
+                Route::post('roles/bulckDelete',[RoleController::class,'bulckDelete'])->name('roles.bulckDelete');
                 Route::get('roles/data',[RoleController::class,'data'])->name('roles.data');
                 Route::resource('roles',RoleController::class)->names('roles');
 
