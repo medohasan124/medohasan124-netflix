@@ -22,7 +22,8 @@
 
                 <x-tables.head>
 
-                    <x-tables.th>ID</x-tables.th>
+                    <x-tables.th>#</x-tables.th>
+                    
                     <x-tables.th>create</x-tables.th>
                     <x-tables.th>read</x-tables.th>
                     <x-tables.th>update</x-tables.th>
