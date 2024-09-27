@@ -31,7 +31,7 @@
             ];
         ?>
 
-       <x-table :url="route('admin.permission.data')"  :data='$data' searchplaceholder="Search about permission" :btnCreate='false' btnCreateHref='#'>
+       <x-datatable :url="route('admin.permission.data')"  :data='$data' searchplaceholder="Search about permission" :btnCreate='false' btnCreateHref='#'>
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="py-3 px-6 text-lg">
@@ -47,7 +47,7 @@
     </thead>
     <tbody>
     </tbody>
-       </x-table>
+       </x-datatable>
     </section>
 
 

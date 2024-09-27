@@ -25,6 +25,7 @@ return [
     'update'   => 'تعديل',
     'delete'   => 'حذف',
     'all'   => 'الكل',
+    'cancel'   => 'الغاء',
     'add_success'   => 'تم الاضافة بنجاح',
     'edit_success'   => 'تم التعديل بنجاح',
     'updated_success'   => 'تم التحديث بنجاح',

@@ -1,9 +1,9 @@
 <x-layouts>
 
-    <x-slot:title>roles</x-slot:title>
+    <x-slot:title>@lang('role.title')</x-slot:title>
     <x-layouts.header>
 
-        <x-slot:title>roles</x-slot:title>
+        <x-slot:title>@lang('role.title')</x-slot:title>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sunt, assumenda dignissimos doloremque
         reiciendis autem iusto saepe ut minima nesciunt?
     </x-layouts.header>
@@ -44,7 +44,7 @@
         ];
     ?>
 
-   <x-table :url="route('admin.roles.data')"  :data='$data' searchplaceholder="Search about permission" :btnBulkCDelete='true' :btnCreate='true' bthCreateHref='{{ route("admin.roles.create") }}' >
+   <x-datatable :url="route('admin.roles.data')"  :data='$data' searchplaceholder="Search about permission" :btnBulkCDelete='true' :btnCreate='true' bthCreateHref='{{ route("admin.roles.create") }}' >
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="py-3 px-6 text-lg">
@@ -66,6 +66,6 @@
 </thead>
 <tbody>
 </tbody>
-   </x-table>
+   </x-datatable>
 </section>
 </x-layouts>

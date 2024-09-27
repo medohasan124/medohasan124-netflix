@@ -14,6 +14,7 @@ return [
     'create'   => 'create',
     'name'   => 'Name',
     'email'   => ' Email',
+    "cancel"=>"Cancel",
     'password'   => 'Password',
     'repeatPassword'   => 'Repeat Password',
     'permission'   => 'Permission',

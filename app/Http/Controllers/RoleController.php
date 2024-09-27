@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\role;
 use App\Http\Requests\StoreroleRequest;
 use App\Http\Requests\UpdateroleRequest;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use Yajra\DataTables\Html\Builder;
@@ -27,8 +28,6 @@ class RoleController extends Controller
         return view("admin.roles.index");
     }
 
-
-
     public function data(){
         $roles = role::all();
 
@@ -48,9 +47,32 @@ class RoleController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
-        //
+        $permissionModal = Permission::all();
+        $permissions = [];
+
+        // Define the total number of permissions each category should have
+        $totalPermissions = 4;
+
+        foreach ($permissionModal as $permission) {
+            $name = explode('-', $permission->name);
+            $permissions[$name[0]][$permission->id] = $permission->name;
+        }
+
+        // Fill categories with "null" values for missing permissions
+        foreach ($permissions as $category => $perms) {
+            $missingCount = $totalPermissions - count($perms);
+            for ($i = 1; $i <= $missingCount; $i++) {
+                $perms[$totalPermissions + $i] = "null";
+            }
+            $permissions[$category] = $perms;
+        }
+
+
+
+        return view("admin.roles.create",compact('permissions'));
     }
 
     /**
@@ -58,7 +80,7 @@ class RoleController extends Controller
      */
     public function store(StoreroleRequest $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
