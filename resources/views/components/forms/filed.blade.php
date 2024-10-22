@@ -1,6 +1,7 @@
 @props(
 [
     'name' => 'name',
+    'formName' => 'formName',
     'label',
     'required' => false,
     'type' => 'text',
@@ -15,7 +16,7 @@
     @endif
 
 
-    <x-forms.input class="block w-full" :checked='$checked' :value='$value' :name='$name' :required='$required' type='{{ $type }}' />
+    <x-forms.input class="block w-full" :checked='$checked' :value='$value' :name='$name' :formName='$formName' :required='$required' type='{{ $type }}' />
 
 
 </div>

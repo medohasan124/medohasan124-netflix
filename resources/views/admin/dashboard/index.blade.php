@@ -11,7 +11,7 @@
     </x-layouts.header>
 
 
-    
+
     <section class="mt-8 flex flex-col md:flex-row gap-8">
         <x-card>
             <x-slot:title>2021 Stats</x-slot:title>
@@ -34,7 +34,7 @@
     </section>
 
     <section class="mt-12">
-        <x-table />
+        {{-- <x-table /> --}}
     </section>
 
 </x-layouts>
