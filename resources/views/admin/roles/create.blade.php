@@ -33,10 +33,11 @@
                 </x-tables.head>
                 <x-tables.body>
 
-
+                    <?php $num = 1 ?>
                     @foreach ($permissions as $key => $permission)
 
                     <x-tables.tr>
+                        <x-tables.td>{{ $num }}</x-tables.td>
                         <x-tables.td>{{ $key }}</x-tables.td>
                             @foreach($permission as $secondkey => $firstvalue)
 
@@ -45,7 +46,8 @@
                                     <?php
                                     $value = explode('-', $firstvalue);
                                     ?>
-                                    <x-forms.filed  :name='$value[1]' type='checkbox' :value='$secondkey' checked='true' />
+
+                                    <x-forms.filed  :name='$value[1]' :formName="$firstvalue" type='checkbox' :value='$secondkey' checked='true' />
                                 </x-tables.td>
                                 @else
                                 <x-tables.td>-</x-tables.td>
@@ -53,6 +55,7 @@
 
                         @endforeach
                     </x-tables.tr>
+                    <?php $num++ ; ?>
                     @endforeach
 
                 </x-tables.body>

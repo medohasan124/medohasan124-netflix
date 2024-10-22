@@ -26,7 +26,7 @@ return [
             'profile' => 'r,u',
             'roles' => 'r,u',
             'sittings' => 'r,u',
-            'moviess' => 'c,r,u,d',
+            'movies' => 'c,r,u,d',
             'actors' => 'c,r,u,d',
         ],
         'user' => [
