@@ -27,7 +27,7 @@ class RoleController extends Controller
     {
         // Display a success toast with no title
 
-      
+
         return view("admin.roles.index");
     }
 
@@ -51,30 +51,12 @@ class RoleController extends Controller
      * Show the form for creating a new resource.
      */
 
+
+
     public function create()
     {
-        $permissionModal = Permission::all();
-        $permissions = [];
 
-        // Define the total number of permissions each category should have
-        $totalPermissions = 4;
-
-        foreach ($permissionModal as $permission) {
-            $name = explode('-', $permission->name);
-            $permissions[$name[0]][$permission->id] = $permission->name;
-        }
-
-        // Fill categories with "null" values for missing permissions
-        foreach ($permissions as $category => $perms) {
-            $missingCount = $totalPermissions - count($perms);
-            for ($i = 1; $i <= $missingCount; $i++) {
-                $perms[$totalPermissions + $i] = "null";
-            }
-            $permissions[$category] = $perms;
-        }
-
-
-
+        $permissions = $this->permission();
         return view("admin.roles.create",compact('permissions'));
     }
 
@@ -98,7 +80,7 @@ class RoleController extends Controller
             }
         }
 
-        return redirect()->route('roles.index');
+        return redirect()->route('role.index');
     }
 
     /**
@@ -114,7 +96,13 @@ class RoleController extends Controller
      */
     public function edit(role $role)
     {
-        //
+
+
+        $ModelsRole = Role::find($role->id);
+        $permissions = $this->permission();
+        $permissionModalByRole = Role::find($role->id)->permissions;
+
+        return view("admin.roles.edit",compact('ModelsRole','permissions','permissionModalByRole'));
     }
 
     /**
@@ -124,6 +112,38 @@ class RoleController extends Controller
     {
         //
     }
+
+    public function permission(){
+
+
+
+            $permissionModal = Permission::all();
+
+
+
+        $permissions = [];
+
+        // Define the total number of permissions each category should have
+        $totalPermissions = 4;
+
+        foreach ($permissionModal as $permission) {
+            $name = explode('-', $permission->name);
+            $permissions[$name[0]][$permission->id] = $permission->name;
+        }
+
+        // Fill categories with "null" values for missing permissions
+        foreach ($permissions as $category => $perms) {
+            $missingCount = $totalPermissions - count($perms);
+            for ($i = 1; $i <= $missingCount; $i++) {
+                $perms[$totalPermissions + $i] = "null";
+            }
+            $permissions[$category] = $perms;
+        }
+
+
+
+        return $permissions ;
+     }
 
     /**
      * Remove the specified resource from storage.
