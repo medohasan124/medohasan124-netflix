@@ -3,4 +3,6 @@
     <p class="my-4 text-lg text-gray-500">
         {{ $slot }}
     </p>
+   
+
 </section>

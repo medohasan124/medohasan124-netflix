@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\role;
+use App\Models\Role;
 use App\Http\Requests\StoreroleRequest;
 use App\Http\Requests\UpdateroleRequest;
 use App\Models\Permission;
@@ -25,6 +25,9 @@ class RoleController extends Controller
     }
     public function index()
     {
+        // Display a success toast with no title
+
+      
         return view("admin.roles.index");
     }
 
@@ -80,8 +83,22 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        
-        dd($request->all());
+        //create role name
+        //loop permissons
+        // if value is on
+            // give permisssion
+        $permissions = array_filter($request->except(['_token', '_method', 'name']));
+
+        $role = role::create([
+            'name' => $request->name,
+        ]);
+        foreach ($permissions as $key => $value) {
+            if ($value == 'on') {
+                $role->givePermission($key);
+            }
+        }
+
+        return redirect()->route('roles.index');
     }
 
     /**
@@ -111,12 +128,25 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(role $role)
+    public function destroy(string $id)
     {
-        //
+        $role =  Role::find($id);
+        $role->permissions()->delete();
+        $role->delete() ;
+        notify()->success(__('admin.delete_success'));
+         return redirect()->route('admin.roles.index');
     }
-    public function bulckDelete(Request $role)
+    public function bulckDelete(Request  $request)
     {
-        dd($role);
+
+        $data = $request['buclkDelete'][0] ;
+        $numbers = explode(',', $data);
+        $role = Role::whereIn('id',$numbers)->get();
+        foreach($role as $row){
+            $row->permissions()->delete();
+            $row->delete() ;
+        }
+        notify()->success(__('admin.delete_success'));
+        return redirect()->route('admin.roles.index');
     }
 }

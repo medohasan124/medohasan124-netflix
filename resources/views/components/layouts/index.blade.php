@@ -4,6 +4,8 @@
 			x-bind:class="{ 'dark': darkMode }">
 
 <head>
+
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {{ $title }}</title>
@@ -12,12 +14,11 @@
     <link rel="stylesheet" href="//cdn.datatables.net/2.1.7/css/dataTables.dataTables.min.css">
 
     <script src='//cdn.datatables.net/2.1.7/js/dataTables.min.js'></script>
-    
+    @notifyCss
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class='bg-white dark:bg-gray-900'>
-
     <x-layouts.sidebar class="min-w-fit flex-grow-0 flex-shrink-0 hidden md:block"/>
 
     <div class='p-4 sm:ml-64'>
@@ -25,11 +26,13 @@
             <x-dark-mode-toggle size="4" />
         </div>
 
+    <x-notify::notify />
 
             {{ $slot }}
             <x-layouts.footer />
     </div>
 
+    @notifyJs
 </body>
 
 </html>
