@@ -44,7 +44,7 @@
         ];
     ?>
 
-   <x-datatable :url="route('admin.roles.data')"  :data='$data' searchplaceholder="Search about permission" :btnBulkCDelete='true' :btnCreate='true' bthCreateHref='{{ route("admin.roles.create") }}' >
+   <x-datatable :url="route('admin.roles.data')"  :data='$data' searchplaceholder="Search about permission" btnBulkCDelete='{{ route("admin.roles.bulckDelete") }}'  btnCreate='{{ route("admin.roles.create") }}'  >
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="py-3 px-6 text-lg">

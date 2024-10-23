@@ -11,12 +11,20 @@
     <section>
 
 
+        @if ($errors->any())
+
+            @foreach ($errors->all() as $error)
+                <x-forms.errors.error>{{ $error }}</x-forms.errors.error>
+            @endforeach
 
 
 
-        <x-forms.form class='w-full  mx-auto' action="{{ route('admin.roles.update', $role->id)') }}" :title="__('role.role_name')" method='POST'>
+        @endif
 
-            <x-forms.filed label='name' name='name' :required='true' type='text' />
+
+        <x-forms.form class='w-full  mx-auto'  action="{{ route('admin.roles.update',['role' => $ModelsRole->id])}}" :title="__('role.role_name')" method='PUT'>
+
+            <x-forms.filed label='name' name='name' :required='true' :value='$ModelsRole->name' type='text' />
 
             <x-tables.table>
 

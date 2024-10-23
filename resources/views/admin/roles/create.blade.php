@@ -11,12 +11,15 @@
     <section>
 
 
-
-
-
         <x-forms.form class='w-full  mx-auto' action="{{ route('admin.roles.store') }}" :title="__('role.role_name')" method='POST'>
 
-            <x-forms.filed label='name' name='name' :required='true' type='text' />
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+
+                    <x-forms.errors.error>{{ $error}}</x-forms.errors.error>
+                @endforeach
+            @endif
+            <x-forms.filed label='name' name='name' value='{{ old("name") }}' :required='true' type='text' />
 
             <x-tables.table>
 
@@ -64,7 +67,7 @@
 
 
 
-            <x-buttons.button class="bg-primary " type="submit " :name='__("role.create_role")' />
+            <x-buttons.button class=" mt-5" type="submit " :name='__("role.create_role")' />
         </x-forms.form>
 
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RoleRequest;
+use App\Http\Requests\RoleUpdateRequest;
 use App\Models\Role;
 use App\Http\Requests\StoreroleRequest;
 use App\Http\Requests\UpdateroleRequest;
@@ -25,6 +27,7 @@ class RoleController extends Controller
     }
     public function index()
     {
+
         // Display a success toast with no title
 
 
@@ -63,24 +66,18 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(RoleRequest $request)
     {
-        //create role name
-        //loop permissons
-        // if value is on
-            // give permisssion
-        $permissions = array_filter($request->except(['_token', '_method', 'name']));
-
         $role = role::create([
             'name' => $request->name,
         ]);
-        foreach ($permissions as $key => $value) {
+        foreach ($request->permissions as $key => $value) {
             if ($value == 'on') {
                 $role->givePermission($key);
             }
         }
-
-        return redirect()->route('role.index');
+        notify()->success(__('admin.create_success'));
+        return redirect()->route('admin.roles.index');
     }
 
     /**
@@ -88,7 +85,7 @@ class RoleController extends Controller
      */
     public function show(role $role)
     {
-        //
+
     }
 
     /**
@@ -108,9 +105,23 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateroleRequest $request, role $role)
+    public function update(RoleUpdateRequest $request ,$id)
     {
-        //
+
+
+        //update role and if has a new permissions add it
+
+        $role = Role::find($id);
+        $role->name = $request->name;
+        $role->save();
+        $role->permissions()->detach();
+        foreach ($request->permissions as $key => $value) {
+            if ($value == 'on') {
+                $role->givePermission($key);
+            }
+        }
+        notify()->success(__('admin.update_success'));
+        return redirect()->route('admin.roles.index');
     }
 
     public function permission(){
@@ -150,8 +161,9 @@ class RoleController extends Controller
      */
     public function destroy(string $id)
     {
+
         $role =  Role::find($id);
-        $role->permissions()->delete();
+        $role->permissions()->detach();
         $role->delete() ;
         notify()->success(__('admin.delete_success'));
          return redirect()->route('admin.roles.index');

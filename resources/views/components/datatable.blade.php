@@ -1,7 +1,8 @@
 @props([
     'searchplaceholder' => 'Search',
     'btnCreate' => false,
-    'btnBulkCDelete' => false,
+    'btnBulkCDelete' => '#',
+    'deleteaction'=> false,
     'bthCreateHref' => '#',
     'url'=>'',
     'data' => [],
@@ -32,12 +33,12 @@
     </div>
 
     @if ($btnCreate)
-    <x-buttons.create :name="__('admin.create')"  :href='$bthCreateHref' />
+    <x-buttons.create :name="__('admin.create')"  :href='$btnCreate' />
     @endif
 
     @if ($btnBulkCDelete)
 
-    <x-modal.bulckdelete class='dark:bg-red-950 dark:hover:bg-red-950 cursor-not-allowed' />
+    <x-modal.bulckdelete :action='$btnBulkCDelete' class='dark:bg-red-950 dark:hover:bg-red-950 cursor-not-allowed' />
 
     @endif
 

@@ -16,7 +16,7 @@ module.exports = {
           'danger': '#dc3545',
           'light': '#f8f9fa',
           'dark': '#343a40',
-          'primary': '#0d6efd',
+          'primary': '#1C64F2',
         }
       },
     },
