@@ -28,7 +28,8 @@ x-data="{ darkMode: localStorage.getItem('dark') === 'true'}"
     <x-layouts.sidebar class="min-w-fit flex-grow-0 flex-shrink-0 hidden md:block"/>
 
     <div class='p-4 sm:ml-64 rtl:sm:ml-0 rtl:sm:mr-64 '>
-        <div class="block sm:absolute top-5 right-8 order-1">
+
+        <div class="block sm:absolute top-5  {{ app()->getLocale() === 'ar' ? 'left-5' : 'right-5' }} order-1">
             <x-dark-mode-toggle size="4" />
         </div>
 
