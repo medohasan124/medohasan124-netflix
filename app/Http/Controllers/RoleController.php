@@ -20,10 +20,10 @@ class RoleController extends Controller
      */
 
      public function __construct(){
-        // $this->middleware('permission:roles_read')->only('index');
-        // $this->middleware('permission:roles_create')->only('create');
-        // $this->middleware('permission:roles_update')->only('update');
-        // $this->middleware('permission:roles_delete')->only('delete');
+         $this->middleware('permission:roles-read')->only('index');
+         $this->middleware('permission:roles-create')->only('create');
+         $this->middleware('permission:roles-update')->only('update','edit');
+         $this->middleware('permission:roles-delete')->only('destroy','bulckDelete');
     }
     public function index()
     {
@@ -175,7 +175,7 @@ class RoleController extends Controller
         $numbers = explode(',', $data);
         $role = Role::whereIn('id',$numbers)->get();
         foreach($role as $row){
-            $row->permissions()->delete();
+            $row->permissions()->detach();
             $row->delete() ;
         }
         notify()->success(__('admin.delete_success'));

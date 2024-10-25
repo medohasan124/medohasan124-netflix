@@ -17,10 +17,12 @@ class DatabaseSeeder extends Seeder
         $this->call(LaratrustSeeder::class);
          User::factory(10)->create();
 
-            User::factory()->create([
+           $user =  User::factory()->create([
              'name' => 'Mohamed',
              'email' => 'superAdmin@gmail.com',
              'password' => bcrypt('123123'),
          ]);
+         $user->addRole('superAdmin');
+         
     }
 }

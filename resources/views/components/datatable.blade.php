@@ -32,16 +32,19 @@
         </div>
     </div>
 
+    @permission('roles-create')
     @if ($btnCreate)
     <x-buttons.create :name="__('admin.create')"  :href='$btnCreate' />
     @endif
+    @endpermission
 
+    @permission('roles-delete')
     @if ($btnBulkCDelete)
 
     <x-modal.bulckdelete :action='$btnBulkCDelete' class='dark:bg-red-950 dark:hover:bg-red-950 cursor-not-allowed'>@lang('admin.b_delete')</x-modal.bulckdelete>
 
     @endif
-
+    @endpermission
     </div>
 
 

@@ -20,7 +20,7 @@ Route::middleware([
     'localeSessionRedirect',
     'localizationRedirect',
     'localeViewPath',
-    // 'auth',
+     'auth',
     // 'role:SuperAdmin|Admin'
 ])
 ->prefix(LaravelLocalization::setLocale())
