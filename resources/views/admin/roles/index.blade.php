@@ -4,8 +4,7 @@
     <x-layouts.header>
 
         <x-slot:title>@lang('role.title')</x-slot:title>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sunt, assumenda dignissimos doloremque
-        reiciendis autem iusto saepe ut minima nesciunt?
+        @lang('role.role_description')
     </x-layouts.header>
 
     <section>
@@ -54,13 +53,13 @@
                #
             </th>
             <th scope="col" class="py-3 px-6 text-lg">
-                @lang('admin.name')
+                @lang('role.name')
             </th>
             <th scope="col" class="py-3 px-6 text-lg">
-                @lang('admin.updated_at')
+                @lang('role.updated_at')
             </th>
             <th scope="col" class="py-3 px-6 text-lg">
-                @lang('admin.action')
+                @lang('role.action')
             </th>
     </tr>
 </thead>

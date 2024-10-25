@@ -38,7 +38,7 @@
 
     @if ($btnBulkCDelete)
 
-    <x-modal.bulckdelete :action='$btnBulkCDelete' class='dark:bg-red-950 dark:hover:bg-red-950 cursor-not-allowed' />
+    <x-modal.bulckdelete :action='$btnBulkCDelete' class='dark:bg-red-950 dark:hover:bg-red-950 cursor-not-allowed'>@lang('admin.b_delete')</x-modal.bulckdelete>
 
     @endif
 

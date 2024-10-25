@@ -1,5 +1,11 @@
 <!doctype html>
-<html x-data="{ darkMode: localStorage.getItem('dark') === 'true'}"
+<html
+@if (app()->getLocale() === 'ar')
+    lang="ar"
+    dir="rtl"
+@endif
+
+x-data="{ darkMode: localStorage.getItem('dark') === 'true'}"
 			x-init="$watch('darkMode', val => localStorage.setItem('dark', val))"
 			x-bind:class="{ 'dark': darkMode }">
 
@@ -21,7 +27,7 @@
 <body class='bg-white dark:bg-gray-900'>
     <x-layouts.sidebar class="min-w-fit flex-grow-0 flex-shrink-0 hidden md:block"/>
 
-    <div class='p-4 sm:ml-64'>
+    <div class='p-4 sm:ml-64 rtl:sm:ml-0 rtl:sm:mr-64 '>
         <div class="block sm:absolute top-5 right-8 order-1">
             <x-dark-mode-toggle size="4" />
         </div>

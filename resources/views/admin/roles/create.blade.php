@@ -4,8 +4,7 @@
     <x-layouts.header>
 
         <x-slot:title> @lang('role.create_role')</x-slot:title>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sunt, assumenda dignissimos doloremque
-        reiciendis autem iusto saepe ut minima nesciunt?
+        @lang('role.role_description')
     </x-layouts.header>
 
     <section>
@@ -19,19 +18,18 @@
                     <x-forms.errors.error>{{ $error}}</x-forms.errors.error>
                 @endforeach
             @endif
-            <x-forms.filed label='name' name='name' value='{{ old("name") }}' :required='true' type='text' />
+            <x-forms.filed label="{{ __('role.name')}}" name='name' value='{{ old("name") }}' :required='true' type='text' />
 
             <x-tables.table>
 
                 <x-tables.head>
 
                     <x-tables.th>#</x-tables.th>
-                    <x-tables.th>create by master </x-tables.th>
-
-                    <x-tables.th>Create</x-tables.th>
-                    <x-tables.th>read</x-tables.th>
-                    <x-tables.th>update</x-tables.th>
-                    <x-tables.th>delete</x-tables.th>
+                    <x-tables.th>@lang('role.name') </x-tables.th>
+                    <x-tables.th>@lang('role.create')</x-tables.th>
+                    <x-tables.th>@lang('role.read')</x-tables.th>
+                    <x-tables.th>@lang('role.update')</x-tables.th>
+                    <x-tables.th>@lang('role.delete')</x-tables.th>
 
                 </x-tables.head>
                 <x-tables.body>

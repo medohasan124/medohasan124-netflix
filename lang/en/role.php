@@ -38,5 +38,7 @@ return [
     'action'   => 'Action',
     'permisson_name' => 'Permission Name',
     'role_name' => 'Role Name',
+    'role_delete_modal' => 'Are you sure you want to delete this product ?',
+    'role_description' =>'Rules for user privileges. You can add, modify, and delete the rule according to the user’s rank',
 
 ];

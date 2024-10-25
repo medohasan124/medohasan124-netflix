@@ -4,8 +4,7 @@
     <x-layouts.header>
 
         <x-slot:title> @lang('role.u_role')</x-slot:title>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia sunt, assumenda dignissimos doloremque
-        reiciendis autem iusto saepe ut minima nesciunt?
+        @lang('role.role_description')
     </x-layouts.header>
 
     <section>
@@ -24,19 +23,18 @@
 
         <x-forms.form class='w-full  mx-auto'  action="{{ route('admin.roles.update',['role' => $ModelsRole->id])}}" :title="__('role.role_name')" method='PUT'>
 
-            <x-forms.filed label='name' name='name' :required='true' :value='$ModelsRole->name' type='text' />
+            <x-forms.filed label="{{__('role.role_name')}}" name='name' :required='true' :value='$ModelsRole->name' type='text' />
 
             <x-tables.table>
 
                 <x-tables.head>
 
                     <x-tables.th>#</x-tables.th>
-                    <x-tables.th>edit by master </x-tables.th>
-
-                    <x-tables.th>Edit</x-tables.th>
-                    <x-tables.th>read</x-tables.th>
-                    <x-tables.th>update</x-tables.th>
-                    <x-tables.th>delete</x-tables.th>
+                    <x-tables.th>@lang('role.name') </x-tables.th>
+                    <x-tables.th>@lang('role.create')</x-tables.th>
+                    <x-tables.th>@lang('role.read')</x-tables.th>
+                    <x-tables.th>@lang('role.update')</x-tables.th>
+                    <x-tables.th>@lang('role.delete')</x-tables.th>
 
                 </x-tables.head>
                 <x-tables.body>
