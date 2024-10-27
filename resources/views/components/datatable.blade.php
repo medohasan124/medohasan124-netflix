@@ -6,6 +6,10 @@
     'bthCreateHref' => '#',
     'url'=>'',
     'modalName'=>'',
+    'permissionCreate'=>'',
+    'permissionDelete'=>'',
+    'btnCreateName'=>'',
+    'btnDeleteName'=>'',
     'data' => [],
     ])
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -33,16 +37,16 @@
         </div>
     </div>
 
-    @permission('roles-create')
+    @permission($permissionCreate)
     @if ($btnCreate)
-    <x-buttons.create :name="__('admin.create')"  :href='$btnCreate' />
+    <x-buttons.create :name="$btnCreateName"  :href='$btnCreate' />
     @endif
     @endpermission
 
-    @permission('roles-delete')
+    @permission($permissionDelete)
     @if ($btnBulkCDelete)
 
-    <x-modal.bulckdelete :action='$btnBulkCDelete'  class='dark:bg-red-950 dark:hover:bg-red-950 cursor-not-allowed'>@lang('admin.b_delete')</x-modal.bulckdelete>
+    <x-modal.bulckdelete :action='$btnBulkCDelete'  class='dark:bg-red-950 dark:hover:bg-red-950 cursor-not-allowed'>{{$btnDeleteName}}</x-modal.bulckdelete>
 
     @endif
     @endpermission

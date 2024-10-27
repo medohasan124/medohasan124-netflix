@@ -4,7 +4,7 @@
     <x-layouts.header>
 
         <x-slot:title>@lang('users.title')</x-slot:title>
-        @lang('users.users_description')
+        @lang('users.description')
     </x-layouts.header>
 
     <section>
@@ -53,7 +53,17 @@
         ];
     ?>
 
-   <x-datatable :url="route('admin.users.data')"  :data='$data' searchplaceholder="Search about permission" btnBulkCDelete='{{ route("admin.users.bulckDelete") }}'  btnCreate='{{ route("admin.users.create") }}'  >
+   <x-datatable
+   :url="route('admin.users.data')"
+   :data='$data'
+   searchplaceholder="Search about permission"
+   btnBulkCDelete='{{ route("admin.users.bulckDelete") }}'
+   btnCreate='{{ route("admin.users.create") }}'
+   permissionCreate='users-create'
+   permissionDelete='users-delete'
+   :btnCreateName="__('admin.create')"
+    :btnDeleteName="__('users.delete')"
+    >
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="py-3 px-6 text-lg">
@@ -61,7 +71,6 @@
             </th>
             <th scope="col" class="py-3 px-6 text-lg">
                #
-
             </th>
             <th scope="col" class="py-3 px-6 text-lg">
                 @lang('users.name')

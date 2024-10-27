@@ -40,6 +40,10 @@ class RoleController extends Controller
         return DataTables::of($roles)
              ->addColumn('checkbox', 'admin.roles.dataTable.checkbox')
              ->addColumn('action', 'admin.roles.dataTable.action')
+             ->addColumn('count' , function($roles){
+                return $roles->users()->count();
+                
+             })
             ->editColumn('created_at', function ($roles) {
                 return $roles->created_at->format('d-m-y');
             })

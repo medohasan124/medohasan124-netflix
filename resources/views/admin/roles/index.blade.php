@@ -23,6 +23,11 @@
             'searchable' => true
             ],
             [
+            'data' => 'count',
+            'className' => 'text-lg text-grey-900 dark:text-white',
+            'searchable' => true
+            ],
+            [
             'data' => 'name',
             'className' => 'text-lg text-grey-900 dark:text-white',
             'searchable' => true
@@ -71,7 +76,17 @@
 
 
 
-   <x-datatable :url="route('admin.roles.data')"  :data='$data' searchplaceholder="Search about permission" btnBulkCDelete='{{ route("admin.roles.bulckDelete") }}'  btnCreate='{{ route("admin.roles.create") }}'  >
+   <x-datatable
+   :url="route('admin.roles.data')"
+   :data='$data'
+   searchplaceholder="Search about permission"
+   btnBulkCDelete='{{ route("admin.roles.bulckDelete") }}'
+   btnCreate='{{ route("admin.roles.create") }}'
+   permissionCreate='roles-create'
+   permissionDelete='roles-delete'
+   :btnCreateName="__('role.create')"
+    :btnDeleteName="__('role.delete')"
+     >
     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
             <th scope="col" class="py-3 px-6 text-lg">
@@ -80,6 +95,9 @@
             <th scope="col" class="py-3 px-6 text-lg">
                #
             </th>
+            <th scope="col" class="py-3 px-6 text-lg">
+                @lang('role.count')
+             </th>
             <th scope="col" class="py-3 px-6 text-lg">
                 @lang('role.name')
             </th>

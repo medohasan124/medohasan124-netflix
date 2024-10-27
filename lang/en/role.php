@@ -17,6 +17,7 @@ return [
     'create'   => 'create',
     'name'   => 'Name',
     "cancel"=>"Cancel",
+    'count' => 'Count',
     'permission'   => 'Permission',
     'create'   => 'Create',
     'read'   => 'Read',
