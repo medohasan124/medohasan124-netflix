@@ -5,6 +5,7 @@
     'deleteaction'=> false,
     'bthCreateHref' => '#',
     'url'=>'',
+    'modalName'=>'',
     'data' => [],
     ])
 <div class="overflow-x-auto relative shadow-md sm:rounded-lg">
@@ -41,7 +42,7 @@
     @permission('roles-delete')
     @if ($btnBulkCDelete)
 
-    <x-modal.bulckdelete :action='$btnBulkCDelete' class='dark:bg-red-950 dark:hover:bg-red-950 cursor-not-allowed'>@lang('admin.b_delete')</x-modal.bulckdelete>
+    <x-modal.bulckdelete :action='$btnBulkCDelete'  class='dark:bg-red-950 dark:hover:bg-red-950 cursor-not-allowed'>@lang('admin.b_delete')</x-modal.bulckdelete>
 
     @endif
     @endpermission

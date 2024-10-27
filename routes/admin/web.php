@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\permission;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -33,9 +34,15 @@ Route::middleware([
                     return view('admin.dashboard.index');
                 })->name('dashboard');
 
+                //Roles Routes
                 Route::post('roles/bulckDelete',[RoleController::class,'bulckDelete'])->name('roles.bulckDelete');
                 Route::get('roles/data',[RoleController::class,'data'])->name('roles.data');
                 Route::resource('roles',RoleController::class)->names('roles');
+
+                //Users Routes
+                Route::post('users/bulckDelete',[UserController::class,'bulckDelete'])->name('users.bulckDelete');
+                Route::get('users/data',[UserController::class,'data'])->name('users.data');
+                Route::resource('users',UserController::class)->names('users');
 
                 Route::get('permission/data',[permission::class,'data'])->name('permission.data');
                 Route::resource('permission',permission::class)->names('permission');

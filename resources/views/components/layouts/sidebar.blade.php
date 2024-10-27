@@ -30,11 +30,11 @@
              </a>
           </li>
           @endpermission
-          @permission('permissions-create')
+          @permission('users-create')
           <li>
-             <a href="{{ route('admin.permission.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                <x-icons.permission-icon />
-                <span class="flex-1 ms-3 whitespace-nowrap">@lang('admin.permission')</span>
+             <a href="{{ route('admin.users.index') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                <x-icons.users-icon />
+                <span class="flex-1 ms-3 whitespace-nowrap">@lang('users.users')</span>
 
              </a>
           </li>
