@@ -26,9 +26,11 @@ class DatabaseSeeder extends Seeder
 
          $users = User::factory()->create();
          $users->addRole('user');
-         
-            $Admin = User::factory()->create();
+
+        $Admin = User::factory()->create();
          $Admin->addRole('admin');
+
+         $setting = \App\Models\setting::factory()->create();
 
     }
 }

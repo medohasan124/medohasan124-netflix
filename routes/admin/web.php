@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\permission;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\settingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -47,6 +48,7 @@ Route::middleware([
                 Route::get('permission/data',[permission::class,'data'])->name('permission.data');
                 Route::resource('permission',permission::class)->names('permission');
 
+                Route::resource('setting',settingController::class)->names('setting');
             });
 });
 
