@@ -42,6 +42,7 @@
             <x-buttons.button class=" mt-5" type="submit " :name='__("setting.title")' />
         </x-forms.form>
 
+        
         @permission('setting-delete')
         <x-modal.delete :action="route('admin.setting.destroy', $setting->id)" :id='$setting->id' class='my-2 flex justify-center items-center' message="{{__('setting.message') . $setting->name}}" >
             @lang('setting.delete')
