@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoremovieRequest;
 use App\Http\Requests\UpdatemovieRequest;
+use App\Models\genra;
 use App\Models\movie;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -20,29 +21,39 @@ class MovieController extends Controller
      */
     public function index()
     {
+        $genra = genra::all();
 
-        return view('admin.movie.index');
+        return view('admin.movie.index',compact('genra'));
     }
     public function data(){
         $movie = movie::with(['genra']);
 
+
+
         return DataTables::of($movie)
              ->addColumn('checkbox', 'admin.movie.dataTable.checkbox')
              ->addColumn('action', 'admin.movie.dataTable.action')
+             ->addColumn('genra', function($movie){
+                return view('admin.movie.dataTable.genra',compact('movie'));
+             })
+             ->editColumn('vote', function($movie){
+                return view('admin.movie.dataTable.vote',compact('movie'));
+             })
+             ->editColumn('vote_count', function($movie){
+                return view('admin.movie.dataTable.vote_count',compact('movie'));
+             })
 
             ->editColumn('poster', function ($movie) {
-                return $movie->poster;
+                return view('admin.movie.dataTable.poster',compact('movie'));
             })
-            ->addColumn('genra', function($movie){
-                return $movie->genra ;
-             })
+
             ->editColumn('created_at', function ($movie) {
                 return $movie->created_at->format('d-m-y');
             })
             ->editColumn('updated_at', function ($movie) {
                 return $movie->created_at->format('d-m-y');
             })
-             ->rawColumns(['action', 'checkbox'])
+             ->rawColumns(['action', 'checkbox','genra','poster','vote','vote_count'])
             ->toJson();
     }
 

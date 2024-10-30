@@ -33,10 +33,11 @@
             'searchable' => true
             ],
             [
-            'data' => 'adult',
+            'data' => 'genra',
             'className' => 'text-lg text-grey-900 dark:text-white',
             'searchable' => true
             ],
+
             [
             'data' => 'title',
             'className' => 'text-lg text-grey-900 dark:text-white',
@@ -69,6 +70,7 @@
     ?>
 
    <x-datatable
+   :genraOption='$genra'
    :url="route('admin.movie.data')"
    :data='$data'
    searchplaceholder="Search about permission"
@@ -91,22 +93,23 @@
               eid
             </th>
             <th scope="col" class="py-3 px-6 text-lg">
-                poster
+                @lang('movie.poster')
             </th>
             <th scope="col" class="py-3 px-6 text-lg">
-                adult
+                @lang('movie.genra')
+            </th>
+
+            <th scope="col" class="py-3 px-6 text-lg">
+                @lang('movie.title')
             </th>
             <th scope="col" class="py-3 px-6 text-lg">
-                title
+                @lang('movie.vote')
             </th>
             <th scope="col" class="py-3 px-6 text-lg">
-                vote
+                @lang('movie.vote_count')
             </th>
             <th scope="col" class="py-3 px-6 text-lg">
-                vote_count
-            </th>
-            <th scope="col" class="py-3 px-6 text-lg">
-                release_date
+                @lang('movie.release_date')
             </th>
 
             <th scope="col" class="py-3 px-6 text-lg">
