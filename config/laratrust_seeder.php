@@ -16,6 +16,8 @@ return [
             'users' => 'c,r,u,d',
             'payments' => 'c,r,u,d',
             'profile' => 'r,u',
+            'genra' => 'r,u,d',
+            'movie' => 'r,u,d',
             'roles' => 'c,r,u,d',
             'settings' => 'r,u',
             'permissions' => 'c,r,u,d',
@@ -26,6 +28,8 @@ return [
         'admin' => [
             'users' => 'c,r,u,d',
             'profile' => 'r,u',
+            'genra' => 'r,u,d',
+            'movie' => 'r,u,d',
             'roles' => 'r,u',
             'settings' => 'r,u',
             'permissions' => 'r,u',
@@ -36,7 +40,8 @@ return [
         'user' => [
             'profile' => 'r,u',
             'roles' => 'r',
-            'movies' => 'r',
+            'genra' => 'r',
+            'movie' => 'r',
             'actors' => 'r',
 
         ],

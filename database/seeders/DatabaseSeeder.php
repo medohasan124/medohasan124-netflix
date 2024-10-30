@@ -4,8 +4,10 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Http\Requests\profile\Profile;
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,8 +16,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(LaratrustSeeder::class);
+        Artisan::call('migrate:fresh');
 
+
+
+        $this->call(LaratrustSeeder::class);
 
            $Super =  User::factory()->create([
              'name' => 'Mohamed',
@@ -29,8 +34,11 @@ class DatabaseSeeder extends Seeder
 
         $Admin = User::factory()->create();
          $Admin->addRole('admin');
-
          $setting = \App\Models\setting::factory()->create();
+
+
+         Artisan::call('get:genra');
+         Artisan::call('get:movies');
 
     }
 }

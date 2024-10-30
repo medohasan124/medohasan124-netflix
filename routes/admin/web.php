@@ -1,12 +1,17 @@
 <?php
 
+
+use App\Http\Controllers\genraController;
+use App\Http\Controllers\MovieController;
 use App\Http\Controllers\permission;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\settingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Pest\Plugins\Profile;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +54,16 @@ Route::middleware([
                 Route::resource('permission',permission::class)->names('permission');
 
                 Route::resource('setting',settingController::class)->names('setting');
+
+                Route::resource('profile',ProfileController::class)->names('profile');
+
+                Route::post('genra/bulckDelete',[genraController::class,'bulckDelete'])->name('genra.bulckDelete');
+                Route::get('genra/data',[genraController::class,'data'])->name('genra.data');
+                Route::resource('genra',genraController::class)->names('genra');
+
+                Route::post('movie/bulckDelete',[MovieController::class,'bulckDelete'])->name('movie.bulckDelete');
+                Route::get('movie/data',[MovieController::class,'data'])->name('movie.data');
+                Route::resource('movie',MovieController::class)->names('movie');
             });
 });
 

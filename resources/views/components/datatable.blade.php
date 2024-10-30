@@ -96,7 +96,7 @@
 
         function getRecordSelect() {
 
-            if ($('.record_select:checked').length >= 2) {
+            if ($('.record_select:checked').length >= 1) {
                 console.log('yes');
                 $('.bulckDelete').removeAttr('disabled');
                 $('.bulckDelete').removeClass('dark:bg-red-950 dark:hover:bg-red-950 cursor-not-allowed');
