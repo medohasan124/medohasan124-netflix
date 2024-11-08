@@ -1,0 +1,65 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user: medo
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    # image: [image-name]
+    container_name: c_php
+    restart: unless-stopped
+    working_dir: /var/www/
+    depends_on:
+      - db
+    volumes:
+      - ./:/var/www
+    networks:
+      - larvel
+
+  db:
+    image: mysql:8.0
+    container_name: c_mysql
+    restart: unless-stopped
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: 'laravel'
+      MYSQL_ROOT_PASSWORD: 'secret'
+      MYSQL_PASSWORD: 'secret'
+      MYSQL_USER: 'laravel'
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - larvel
+  nginx:
+    image: nginx:alpine
+    container_name: c_nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - larvel
+
+  npm:
+     build:
+            context: .
+            dockerfile: npm.Dockerfile
+     container_name: npm
+    #  restart: unless-stopped
+    #  working_dir: /var/www/html
+     volumes:
+        - ./:/var/www/html
+    #  entrypoint: ["npm"]
+     networks:
+        - larvel
+
+networks:
+  larvel:
+    driver: bridge
