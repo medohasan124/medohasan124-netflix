@@ -21,10 +21,7 @@ x-data="{ darkMode: localStorage.getItem('dark') === 'true'}"
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src='//cdn.datatables.net/2.1.8/js/dataTables.min.js'></script>
     @notifyCss
-    {{-- <link rel="stylesheet" href="resources/sass/app.css">
-    <script src='resources/js/app.js'></script> --}}
-    @vite(['resources/sass/app.css', 'resources/js/app.js'])
-    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
 <body class='bg-white dark:bg-gray-900'>

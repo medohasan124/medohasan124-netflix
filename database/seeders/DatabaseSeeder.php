@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
 
 
          Artisan::call('get:genra');
-        //  Artisan::call('get:movies');
+          Artisan::call('get:movies');
 
     }
 }
